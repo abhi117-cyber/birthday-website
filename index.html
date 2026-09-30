@@ -37,6 +37,131 @@ button{font:inherit}canvas{position:fixed;inset:0;pointer-events:none}#stars{z-i
 .title{text-align:center;margin-bottom:20px}.title span{display:block;color:#fbcfe8;letter-spacing:3px;text-transform:uppercase;font-size:12px;margin-bottom:8px}.title h2{font:800 clamp(1.7rem,6vw,2.5rem) Cinzel}.memory{background:linear-gradient(135deg,#2d0b37dd,#13051bee);border:1px solid #ff72b633;border-radius:25px;padding:29px 22px;margin:15px 0;text-align:center;box-shadow:0 20px 40px #0008;transition:.35s}.memory:hover{transform:translateY(-7px)}.mi{width:68px;height:68px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#ff2d8622;border:1px solid #ff72b655;font-size:28px}.memory h3{font:600 22px 'Playfair Display';margin:14px 0 8px;color:#ffe4ef}.memory p{color:#f5d9e8;font:20px/1.55 Caveat}
 .heart{font-size:82px;animation:hb 1.4s infinite;filter:drop-shadow(0 0 28px #ff2d86)}@keyframes hb{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.1)}}.final-title{font:800 clamp(2rem,8vw,4rem) Cinzel;margin:12px 0 22px;background:linear-gradient(120deg,#fff,#ffd0e4,#ff4f9a,#ffd166);-webkit-background-clip:text;color:transparent}.final-box{text-align:left;padding:25px;border-radius:23px;background:#1c0824bb;border:1px solid #ff72b633;box-shadow:0 20px 50px #0008}.final-box p{font:600 1rem/1.8 'Playfair Display';color:#ffe4ef;margin-bottom:15px}.highlight{border-left:3px solid #ff72b6;padding-left:13px;color:#fbcfe8!important}.footer{margin:20px 0;font:24px 'Dancing Script';color:#ffd166}
 
+   /* Top Sound & Progress Bar */
+    .top-controls {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      pointer-events: none;
+    }
+
+    .audio-btn {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      color: #fbcfe8;
+      border-radius: 9999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .audio-btn:hover {
+      background: rgba(244, 114, 182, 0.2);
+      border-color: rgba(244, 114, 182, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .nav-indicator {
+      display: flex;
+      gap: 6px;
+      background: rgba(20, 5, 25, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .nav-dot.active {
+      width: 22px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #f472b6, #fb7185);
+      box-shadow: 0 0 10px rgba(244, 114, 182, 0.8);
+    }
+ /* Candle wish interaction */
+    .candle-interactive {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(244, 114, 182, 0.4);
+      border-radius: 20px;
+      padding: 16px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .candle-interactive:hover {
+      background: rgba(244, 114, 182, 0.12);
+      border-color: #f472b6;
+      transform: translateY(-2px);
+    }
+
+    .candle-flame {
+      font-size: 26px;
+      filter: drop-shadow(0 0 10px #f59e0b);
+      animation: flameWiggle 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes flameWiggle {
+      0% { transform: rotate(-3deg) scale(1); }
+      100% { transform: rotate(3deg) scale(1.08); }
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fce7f3;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(244, 114, 182, 0.5);
+      transform: translateY(-2px);
+    }
+  
+  
 /* BALLOONS */
 #balloons{position:fixed;inset:0;z-index:80;pointer-events:none;overflow:hidden}
 .balloon{--s:64px;position:absolute;width:var(--s);height:calc(var(--s)*1.22);border-radius:50% 50% 46% 46%;pointer-events:auto;cursor:pointer;background:radial-gradient(circle at 30% 22%,#fff9 0 7%,transparent 8%),linear-gradient(135deg,var(--a),var(--b));box-shadow:inset -9px -14px 18px #0003,inset 8px 8px 15px #ffffff18,0 12px 28px #0005;animation:bf var(--d) ease-in-out infinite alternate;transition:.2s}.balloon:before{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);width:11px;height:12px;background:var(--b);clip-path:polygon(0 0,100% 0,50% 100%)}.balloon:after{content:"";position:absolute;left:50%;top:100%;height:145px;width:1px;background:linear-gradient(#ffffff99,#ffffff10)}.balloon.pop{animation:none;transform:scale(1.65) rotate(20deg);opacity:0}@keyframes bf{from{transform:translateY(14px) rotate(-4deg)}to{transform:translateY(-18px) rotate(5deg)}}
@@ -105,13 +230,19 @@ button{font:inherit}canvas{position:fixed;inset:0;pointer-events:none}#stars{z-i
 
     <div style="text-align:center;margin-top:25px">
       <button class="btn" onclick="next(4)">
-        कुछ यादें देखें 💫
+         💫Tap the 🎂✨
       </button>
     </div>
 
   </div>
 </section>
-
+<!-- Make a wish interactive candle -->
+        <div class="candle-interactive" onclick="blowCandle(this)" title="Click to make a wish!">
+          <span class="candle-flame" id="candleFlame">🕯️</span>
+          <span style="font-size: 13.5px; color: #ffe4e6; font-weight: 600;" id="candlePrompt">
+            Tap candle to make a secret birthday wish ✨
+          </span>
+        </div>
 
 <section class="screen" id="s5"><div class="glass"><div class="heart">❤️</div><h1 class="final-title">Happy Birthday Shivani</h1>
 <div class="final-box"><p>जन्मदिन की बहुत-बहुत शुभकामनाएँ। 🎂</p><p>मेरी बस यही wish है कि तुम्हारी जिंदगी में हमेशा खुशियाँ रहें, तुम्हारे चेहरे पर हमेशा मुस्कान रहे और आने वाला हर साल तुम्हारे लिए पहले से भी खूबसूरत हो।</p><p class="highlight">कुछ लोग जिंदगी में थोड़े समय के लिए आते हैं, लेकिन उनकी यादें बहुत लंबे समय तक साथ रहती हैं।</p><p>आज के दिन बस इतना कहना है — अपना birthday खूब अच्छे से मनाना, खूब खुश रहना और हमेशा मुस्कुराते रहना। ❤️</p></div>
@@ -139,20 +270,174 @@ function clearPin(){pin=pin.slice(0,-1);drawPin();document.getElementById("hint"
 function checkPin(){
  audio();let boxes=document.querySelectorAll(".pin-box"),h=document.getElementById("hint");
  if(pin===SECRET_PIN){h.style.color="#86efac";h.textContent="Unlocked ❤️";confetti(80);setTimeout(()=>next(2),550)}
- else{h.textContent="Hmm… PIN सही नहीं है 😄";boxes.forEach(x=>x.classList.add("error"));setTimeout(()=>boxes.forEach(x=>x.classList.remove("error")),450);setTimeout(()=>{pin="";drawPin()},450)}
+ else{h.textContent="Oops! Galat passcode 🙈 Shivani";boxes.forEach(x=>x.classList.add("error"));setTimeout(()=>boxes.forEach(x=>x.classList.remove("error")),450);setTimeout(()=>{pin="";drawPin()},450)}
 }
 let opened=false;
 function openGift(){audio();startMusic();if(!opened){opened=true;document.querySelector(".gift").classList.add("open");confetti(60);makeBalloons(8);showHint()}}
-/* BALLOONS */
-const zone=document.getElementById("balloons"),hint=document.getElementById("hintBalloon"),cols=[["#ff4f9a","#be185d"],["#fb7185","#e11d48"],["#c084fc","#7e22ce"],["#ffd166","#f59e0b"],["#60a5fa","#2563eb"],["#f9a8d4","#db2777"]];
-let popped=0;
-function showHint(){hint.classList.add("show");setTimeout(()=>hint.classList.remove("show"),4500)}
-function makeBalloons(n=10){for(let i=0;i<n;i++){let b=document.createElement("div"),c=cols[Math.floor(Math.random()*cols.length)];b.className="balloon";b.style.setProperty("--a",c[0]);b.style.setProperty("--b",c[1]);b.style.setProperty("--d",3.5+Math.random()*3+"s");b.style.left=3+Math.random()*94+"%";b.style.top=8+Math.random()*70+"%";b.onclick=e=>pop(b,e.clientX,e.clientY);zone.appendChild(b)}}
-function pop(b,x,y){
- if(b.classList.contains("pop"))return;b.classList.add("pop");popped++;popSound();
- let t=document.createElement("div");t.className="pop";t.textContent=["POP! 🎉","✨ WOW!","💥 POP!","🎈✨"][Math.floor(Math.random()*4)];t.style.left=x-30+"px";t.style.top=y-15+"px";document.body.appendChild(t);setTimeout(()=>t.remove(),800);
- if(popped%5===0)confetti(25);setTimeout(()=>b.remove(),250)
-}
+
+   // Floating particles (Hearts, Stars, Soft Orbs)
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * ambientCanvas.width;
+        this.y = ambientCanvas.height + Math.random() * 80;
+        this.size = Math.random() * 12 + 6;
+        this.speedY = Math.random() * 0.9 + 0.35;
+        this.speedX = (Math.random() - 0.5) * 0.7;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.type = Math.random() > 0.45 ? 'heart' : (Math.random() > 0.5 ? 'sparkle' : 'petal');
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 1.5;
+        this.color = ['#f472b6', '#fb7185', '#fda4af', '#fbcfe8', '#fef08a'][Math.floor(Math.random() * 5)];
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX + Math.sin(this.y * 0.01) * 0.5;
+        this.rotation += this.rotSpeed;
+        if (this.y < -30) this.reset();
+      }
+      draw() {
+        ambientCtx.save();
+        ambientCtx.translate(this.x, this.y);
+        ambientCtx.rotate((this.rotation * Math.PI) / 180);
+        ambientCtx.globalAlpha = this.opacity;
+        ambientCtx.fillStyle = this.color;
+
+        if (this.type === 'heart') {
+          const s = this.size * 0.6;
+          ambientCtx.beginPath();
+          ambientCtx.moveTo(0, s * 0.3);
+          ambientCtx.bezierCurveTo(-s, -s * 0.5, -s * 1.2, s * 0.4, 0, s * 1.2);
+          ambientCtx.bezierCurveTo(s * 1.2, s * 0.4, s, -s * 0.5, 0, s * 0.3);
+          ambientCtx.fill();
+        } else if (this.type === 'sparkle') {
+          const s = this.size * 0.5;
+          ambientCtx.beginPath();
+          for (let i = 0; i < 4; i++) {
+            ambientCtx.rotate(Math.PI / 2);
+            ambientCtx.lineTo(0, -s);
+            ambientCtx.lineTo(s * 0.25, 0);
+          }
+          ambientCtx.fill();
+        } else {
+          ambientCtx.beginPath();
+          ambientCtx.ellipse(0, 0, this.size * 0.4, this.size * 0.8, 0, 0, Math.PI * 2);
+          ambientCtx.fill();
+        }
+        ambientCtx.restore();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Particle());
+    }
+  
+
+
+  
+  // ================= BALLOONS (GUBBARE) SYSTEM =================
+    const balloonContainer = document.getElementById("balloon-container");
+    const balloonColors = [
+      { bg: 'radial-gradient(circle at 35% 30%, #ff6b8b, #e11d48, #881337)', knot: '#881337' },
+      { bg: 'radial-gradient(circle at 35% 30%, #f472b6, #db2777, #701a75)', knot: '#701a75' },
+      { bg: 'radial-gradient(circle at 35% 30%, #fde047, #eab308, #854d0e)', knot: '#854d0e' },
+      { bg: 'radial-gradient(circle at 35% 30%, #38bdf8, #0284c7, #075985)', knot: '#075985' },
+      { bg: 'radial-gradient(circle at 35% 30%, #c084fc, #9333ea, #581c87)', knot: '#581c87' },
+      { bg: 'radial-gradient(circle at 35% 30%, #4ade80, #16a34a, #14532d)', knot: '#14532d' },
+      { bg: 'radial-gradient(circle at 35% 30%, #fb923c, #ea580c, #7c2d12)', knot: '#7c2d12' }
+    ];
+
+    function createBalloon(startX, speedMultiplier = 1) {
+      if (!balloonContainer) return;
+      const balloon = document.createElement("div");
+      balloon.className = "balloon";
+
+      const colorData = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+      const sizeScale = (Math.random() * 0.45 + 0.75);
+      const x = startX !== undefined ? startX : Math.random() * (window.innerWidth - 80) + 40;
+      const speed = (Math.random() * 1.6 + 1.8) * speedMultiplier;
+      const swayAmplitude = Math.random() * 30 + 15;
+      const swaySpeed = Math.random() * 0.025 + 0.015;
+
+      balloon.style.left = `${x}px`;
+      balloon.style.transform = `scale(${sizeScale})`;
+
+      balloon.innerHTML = `
+        <div class="balloon-body" style="background: ${colorData.bg};">
+          <div class="balloon-knot" style="background: ${colorData.knot};"></div>
+          <div class="balloon-string"></div>
+        </div>
+      `;
+
+      let posY = window.innerHeight + 160;
+      let angle = Math.random() * Math.PI * 2;
+
+      function floatBalloon() {
+        posY -= speed;
+        angle += swaySpeed;
+        const currentX = x + Math.sin(angle) * swayAmplitude;
+        balloon.style.top = `${posY}px`;
+        balloon.style.left = `${currentX}px`;
+
+        if (posY > -220) {
+          requestAnimationFrame(floatBalloon);
+        } else {
+          balloon.remove();
+        }
+      }
+
+      balloon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        popBalloon(balloon, currentX || x, posY);
+      });
+
+      balloonContainer.appendChild(balloon);
+      requestAnimationFrame(floatBalloon);
+    }
+
+    function popBalloon(element, x, y) {
+      playPopSound();
+      triggerConfettiBurst(x + 30, y + 35, 25);
+      element.remove();
+    }
+
+    function playPopSound() {
+      initAudio();
+      if (!audioContext) return;
+      try {
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(450, audioContext.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(80, audioContext.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        osc.start();
+        osc.stop(audioContext.currentTime + 0.1);
+      } catch(e){}
+    }
+
+    function launchBalloonFlurry(count = 20) {
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const randX = Math.random() * (window.innerWidth - 100) + 50;
+          createBalloon(randX, 1.25);
+        }, i * 160);
+      }
+    }
+
+    function startContinuousBalloons() {
+      if (balloonSpawnInterval) clearInterval(balloonSpawnInterval);
+      balloonSpawnInterval = setInterval(() => {
+        if (currentStep >= 2) {
+          createBalloon();
+        }
+      }, 1800);
+    }
 /* CONFETTI */
 const cc=document.getElementById("confetti"),cx=cc.getContext("2d");let pieces=[];
 function size(){cc.width=innerWidth;cc.height=innerHeight}size();addEventListener("resize",size);
@@ -162,20 +447,193 @@ function draw(){cx.clearRect(0,0,cc.width,cc.height);let c=["#ff2d86","#ff72b6",
 const sc=document.getElementById("stars"),sx=sc.getContext("2d");let stars=[];
 function starSize(){sc.width=innerWidth;sc.height=innerHeight;stars=[];for(let i=0;i<Math.min(160,innerWidth*innerHeight/8500);i++)stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:.4+Math.random()*1.5,a:.2+Math.random()*.7,s:.001+Math.random()*.004})}starSize();addEventListener("resize",starSize);
 function starDraw(){sx.clearRect(0,0,sc.width,sc.height);stars.forEach(s=>{s.a+=s.s;if(s.a>.9||s.a<.2)s.s*=-1;sx.beginPath();sx.arc(s.x,s.y,s.r,0,Math.PI*2);sx.fillStyle=`rgba(255,220,240,${s.a})`;sx.fill()});requestAnimationFrame(starDraw)}starDraw();
-/* BUILT-IN HAPPY BIRTHDAY MUSIC: no MP3 required */
-let ac=null,gain=null,musicOn=false,timer=null;
-const hz={C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,B4:493.88,C5:523.25,D5:587.33,E5:659.25,F5:698.46,G5:783.99,A5:880};
-const tune=[["G4",.28],["G4",.28],["A4",.55],["G4",.55],["C5",.55],["B4",1],["G4",.28],["G4",.28],["A4",.55],["G4",.55],["D5",.55],["C5",1],["G4",.28],["G4",.28],["G5",.55],["E5",.55],["C5",.55],["B4",.55],["A4",1],["F5",.28],["F5",.28],["E5",.55],["C5",.55],["D5",.55],["C5",1.15]];
-function audio(){if(!ac){ac=new(window.AudioContext||window.webkitAudioContext)();gain=ac.createGain();gain.gain.value=.09;gain.connect(ac.destination)}if(ac.state==="suspended")ac.resume()}
-function note(n,t,d){let o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.value=hz[n];g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.55,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+d-.04);o.connect(g);g.connect(gain);o.start(t);o.stop(t+d)}
-function schedule(){if(!musicOn)return;let t=ac.currentTime+.08;for(let [n,d] of tune){note(n,t,d);t+=d+.035}timer=setTimeout(schedule,(t-ac.currentTime)*1000-80)}
-function startMusic(){audio();if(musicOn)return;musicOn=true;document.getElementById("music").textContent="🎵 Birthday Music: ON";document.getElementById("music").classList.add("on");schedule()}
-function stopMusic(){musicOn=false;clearTimeout(timer);document.getElementById("music").textContent="🎵 Play Birthday Music";document.getElementById("music").classList.remove("on")}
-document.getElementById("music").onclick=()=>{audio();musicOn?stopMusic():startMusic()};
-function popSound(){audio();let o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type="triangle";o.frequency.setValueAtTime(280,t);o.frequency.exponentialRampToValueAtTime(70,t+.11);g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.0001,t+.12);o.connect(g);g.connect(gain);o.start(t);o.stop(t+.13)}
-function celebrate(){audio();startMusic();confetti(300);makeBalloons(15);setTimeout(()=>confetti(180),700);setTimeout(()=>confetti(180),1400)}
-document.addEventListener("keydown",e=>{if(e.key>="0"&&e.key<="9")press(+e.key);if(e.key==="Backspace")clearPin();if(e.key==="Enter")checkPin()});
-document.addEventListener("pointerdown",audio,{once:true});
+ // ================= SOUND SYNTHESIZER: HAPPY BIRTHDAY TUNE =================
+    function initAudio() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+    }
+
+    function playBellNote(freq, duration = 0.8, volume = 0.15) {
+      if (!audioContext || !isMusicPlaying) return;
+      try {
+        const now = audioContext.currentTime;
+        const osc1 = audioContext.createOscillator();
+        const gain1 = audioContext.createGain();
+        osc1.type = 'triangle';
+        osc1.frequency.setValueAtTime(freq, now);
+
+        const osc2 = audioContext.createOscillator();
+        const gain2 = audioContext.createGain();
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(freq * 2, now);
+
+        gain1.gain.setValueAtTime(volume, now);
+        gain1.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        gain2.gain.setValueAtTime(volume * 0.4, now);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, now + duration * 0.6);
+
+        osc1.connect(gain1);
+        osc2.connect(gain2);
+        gain1.connect(audioContext.destination);
+        gain2.connect(audioContext.destination);
+
+        osc1.start(now);
+        osc2.start(now);
+        osc1.stop(now + duration);
+        osc2.stop(now + duration);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    const C5 = 523.25, D5 = 587.33, E5 = 659.25, F5 = 698.46, G5 = 783.99, A5 = 880.00, Bb5 = 932.33, C6 = 1046.50;
+
+    const happyBirthdayScore = [
+      { freq: C5, dur: 0.35, delay: 0.4 },
+      { freq: C5, dur: 0.35, delay: 0.4 },
+      { freq: D5, dur: 0.7,  delay: 0.8 },
+      { freq: C5, dur: 0.7,  delay: 0.8 },
+      { freq: F5, dur: 0.7,  delay: 0.8 },
+      { freq: E5, dur: 1.3,  delay: 1.4 },
+
+      { freq: C5, dur: 0.35, delay: 0.4 },
+      { freq: C5, dur: 0.35, delay: 0.4 },
+      { freq: D5, dur: 0.7,  delay: 0.8 },
+      { freq: C5, dur: 0.7,  delay: 0.8 },
+      { freq: G5, dur: 0.7,  delay: 0.8 },
+      { freq: F5, dur: 1.3,  delay: 1.4 },
+
+      { freq: C5, dur: 0.35, delay: 0.4 },
+      { freq: C5, dur: 0.35, delay: 0.4 },
+      { freq: C6, dur: 0.7,  delay: 0.8 },
+      { freq: A5, dur: 0.7,  delay: 0.8 },
+      { freq: F5, dur: 0.7,  delay: 0.8 },
+      { freq: E5, dur: 0.7,  delay: 0.8 },
+      { freq: D5, dur: 1.4,  delay: 1.5 },
+
+      { freq: Bb5, dur: 0.35, delay: 0.4 },
+      { freq: Bb5, dur: 0.35, delay: 0.4 },
+      { freq: A5,  dur: 0.7,  delay: 0.8 },
+      { freq: F5,  dur: 0.7,  delay: 0.8 },
+      { freq: G5,  dur: 0.7,  delay: 0.8 },
+      { freq: F5,  dur: 1.8,  delay: 2.2 }
+    ];
+
+    function playHappyBirthdayMelody(onComplete) {
+      if (!isMusicPlaying) return;
+      let accumulatedTime = 0;
+
+      happyBirthdayScore.forEach((note, index) => {
+        birthdayTuneTimeout = setTimeout(() => {
+          if (isMusicPlaying) {
+            playBellNote(note.freq, note.dur * 1.5, 0.16);
+          }
+          if (index === happyBirthdayScore.length - 1 && onComplete) {
+            setTimeout(onComplete, note.delay * 1000 + 1200);
+          }
+        }, accumulatedTime * 1000);
+
+        accumulatedTime += note.delay;
+      });
+    }
+
+    function loopHappyBirthday() {
+      if (!isMusicPlaying) return;
+      playHappyBirthdayMelody(() => {
+        if (isMusicPlaying) {
+          loopHappyBirthday();
+        }
+      });
+    }
+
+    function startBirthdayCelebrationMusic() {
+      initAudio();
+      isMusicPlaying = true;
+      document.getElementById("audioText").innerText = "Music: Birthday 🎶";
+      document.getElementById("audioToggleBtn").style.borderColor = "#f472b6";
+      document.getElementById("audioToggleBtn").style.background = "rgba(244, 114, 182, 0.25)";
+
+      if (birthdayTuneTimeout) clearTimeout(birthdayTuneTimeout);
+      loopHappyBirthday();
+    }
+
+    function stopBirthdayCelebrationMusic() {
+      isMusicPlaying = false;
+      document.getElementById("audioText").innerText = "Music: Off 🔇";
+      document.getElementById("audioToggleBtn").style.borderColor = "rgba(255, 255, 255, 0.2)";
+      document.getElementById("audioToggleBtn").style.background = "rgba(255, 255, 255, 0.08)";
+      if (birthdayTuneTimeout) {
+        clearTimeout(birthdayTuneTimeout);
+        birthdayTuneTimeout = null;
+      }
+    }
+
+    document.getElementById("audioToggleBtn").addEventListener("click", () => {
+      initAudio();
+      if (isMusicPlaying) {
+        stopBirthdayCelebrationMusic();
+      } else {
+        startBirthdayCelebrationMusic();
+      }
+    });
+
+    function playSuccessChime() {
+      initAudio();
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        setTimeout(() => playBellNote(freq, 1.2, 0.15), idx * 120);
+      });
+    }
+
+    function playWrongChime() {
+      initAudio();
+      playBellNote(260, 0.25, 0.08);
+      setTimeout(() => playBellNote(220, 0.35, 0.08), 120);
+    }
+
+   // Step 5 Interactive Candle Wish
+    let candleBlown = false;
+    function blowCandle(element) {
+      if (candleBlown) return;
+      candleBlown = true;
+      initAudio();
+      playSuccessChime();
+
+      document.getElementById("candleFlame").innerText = "💨";
+      document.getElementById("candlePrompt").innerText = "Your wish is sent to the stars! ✨ Tumhari har wish poori ho!";
+      element.style.borderColor = "#4ade80";
+
+      triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.3, 100);
+      launchBalloonFlurry(18);
+    }
+
+    function triggerCelebrationBurst() {
+      initAudio();
+      playSuccessChime();
+      triggerConfettiBurst(Math.random() * window.innerWidth, window.innerHeight * 0.4, 80);
+      launchBalloonFlurry(15);
+      setTimeout(() => {
+        triggerConfettiBurst(Math.random() * window.innerWidth, window.innerHeight * 0.4, 80);
+      }, 250);
+    }
+
+    function restartSurprise() {
+      currentPin = "";
+      candleBlown = false;
+      document.getElementById("candleFlame").innerText = "🕯️";
+      document.getElementById("candlePrompt").innerText = "Tap candle to make a secret birthday wish ✨";
+      const giftBox = document.getElementById("giftBoxStage");
+      if (giftBox) giftBox.classList.remove("opened");
+      updatePinDisplay();
+      stopBirthdayCelebrationMusic();
+      goToStep(1);
+    }
+  
 </script>
 </body>
 </html>
