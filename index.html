@@ -11,7 +11,7 @@
 :root{--p:#ff2d86;--p2:#ff72b6;--g:#ffd166;--bg:#06020b}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{min-height:100vh;overflow-x:hidden;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;background:radial-gradient(circle at 10% 10%,#ff2d862b,transparent 28%),radial-gradient(circle at 90% 80%,#9333ea2b,transparent 30%),linear-gradient(145deg,#06020b,#17051d 50%,#05020a)}
-button{font:inherit}canvas{position:fixed;inset:0;pointer-events:none}#stars{z-index:0}#confetti{z-index:900}
+button{font:inherit}canvas{position:fixed;inset:0;pointer-events:none}#ambientCanvas{z-index:1}#stars{z-index:0}#confetti{z-index:900}
 .orb{position:fixed;border-radius:50%;filter:blur(85px);opacity:.32;z-index:0;pointer-events:none;animation:orb 12s ease-in-out infinite alternate}
 .o1{width:360px;height:360px;background:#e11d48;left:-130px;top:-100px}.o2{width:430px;height:430px;background:#7e22ce;right:-160px;bottom:-130px;animation-delay:-4s}.o3{width:280px;height:280px;background:#f43f5e;right:15%;top:35%;animation-delay:-7s}
 @keyframes orb{to{transform:translate(45px,-35px) scale(1.12)}}
@@ -171,10 +171,10 @@ button{font:inherit}canvas{position:fixed;inset:0;pointer-events:none}#stars{z-i
 </style>
 </head>
 <body>
-<canvas id="stars"></canvas><canvas id="confetti"></canvas>
+<canvas id="ambientCanvas"></canvas><canvas id="stars"></canvas><canvas id="confetti"></canvas>
 <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-<div class="top"><button class="music" id="music">🎵 Play Birthday Music</button><div class="dots"><i class="dot active"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div></div>
-<div id="balloons"></div><div id="hintBalloon">🎈 Balloons ko tap/click karke phodo!</div>
+<div class="top"><button class="music" id="audioToggleBtn"><span id="audioText">Music: Off 🔇</span></button><div class="dots"><i class="dot active"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div></div>
+<div id="balloons"></div><div id="balloon-container" style="position:fixed;inset:0;z-index:81;pointer-events:none;overflow:hidden"></div><div id="hintBalloon">🎈 Balloons ko tap/click karke phodo!</div>
 
 <div class="app">
 <section class="screen active" id="s1"><div class="glass">
@@ -236,13 +236,19 @@ button{font:inherit}canvas{position:fixed;inset:0;pointer-events:none}#stars{z-i
 
   </div>
 </section>
-<!-- Make a wish interactive candle -->
-        <div class="candle-interactive" onclick="blowCandle(this)" title="Click to make a wish!">
-          <span class="candle-flame" id="candleFlame">🕯️</span>
-          <span style="font-size: 13.5px; color: #ffe4e6; font-weight: 600;" id="candlePrompt">
-            Tap candle to make a secret birthday wish ✨
-          </span>
-        </div>
+<section class="screen" id="s4"><div style="width:100%">
+  <div class="title"><span>Little Memories</span><h2>कुछ पल… जो याद रह गए ❤️</h2></div>
+  <div class="memory"><div class="mi">🌸</div><h3>छोटी सी शुरुआत</h3><p>कभी-कभी किसी से हुई एक छोटी सी बात भी बाद में बहुत बड़ी याद बन जाती है।</p></div>
+  <div class="memory"><div class="mi">✨</div><h3>वो सामान्य से पल</h3><p>बाहर से देखने पर शायद वो पल बिल्कुल सामान्य थे… लेकिन कुछ लोगों के साथ बिताया समय अपने आप खास हो जाता है।</p></div>
+  <div class="memory"><div class="mi">💭</div><h3>कुछ अधूरी बातें</h3><p>कुछ बातें कही जाती हैं, कुछ मन में रह जाती हैं… और कुछ हमेशा एक खूबसूरत याद बनकर रहती हैं।</p></div>
+  <div class="memory"><div class="mi">🕯️</div><h3>Make a Wish</h3>
+    <div class="candle-interactive" onclick="blowCandle(this)" title="Click to make a wish!">
+      <span class="candle-flame" id="candleFlame">🕯️</span>
+      <span style="font-size:13.5px;color:#ffe4e6;font-weight:600" id="candlePrompt">Tap candle to make a secret birthday wish ✨</span>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:25px"><button class="btn" onclick="next(5)">आखिरी surprise ❤️</button></div>
+</div></section>
 
 <section class="screen" id="s5"><div class="glass"><div class="heart">❤️</div><h1 class="final-title">Happy Birthday Shivani</h1>
 <div class="final-box"><p>जन्मदिन की बहुत-बहुत शुभकामनाएँ। 🎂</p><p>मेरी बस यही wish है कि तुम्हारी जिंदगी में हमेशा खुशियाँ रहें, तुम्हारे चेहरे पर हमेशा मुस्कान रहे और आने वाला हर साल तुम्हारे लिए पहले से भी खूबसूरत हो।</p><p class="highlight">कुछ लोग जिंदगी में थोड़े समय के लिए आते हैं, लेकिन उनकी यादें बहुत लंबे समय तक साथ रहती हैं।</p><p>आज के दिन बस इतना कहना है — अपना birthday खूब अच्छे से मनाना, खूब खुश रहना और हमेशा मुस्कुराते रहना। ❤️</p></div>
@@ -254,26 +260,46 @@ button{font:inherit}canvas{position:fixed;inset:0;pointer-events:none}#stars{z-i
 const SECRET_PIN="1234"; // PIN बदलने के लिए सिर्फ यही बदलो
 /* ============================================= */
 
+// Existing interactive systems wired together in one place
+let audioContext = null;
+let isMusicPlaying = false;
+let birthdayTuneTimeout = null;
+let balloonSpawnInterval = null;
+let currentStep = 1;
+let currentPin = "";
+const ambientCanvas = document.getElementById("ambientCanvas");
+const ambientCtx = ambientCanvas.getContext("2d");
+const particles = [];
+
+function resizeAmbient(){ ambientCanvas.width=innerWidth; ambientCanvas.height=innerHeight; }
+resizeAmbient(); addEventListener("resize",resizeAmbient);
+function drawAmbient(){ ambientCtx.clearRect(0,0,ambientCanvas.width,ambientCanvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(drawAmbient); }
+
 let pin="",current=1;
 const screens=[...document.querySelectorAll(".screen")],dots=[...document.querySelectorAll(".dot")];
 function next(n){
   if(n<1||n>5)return;
   screens.forEach((x,i)=>x.classList.toggle("active",i===n-1));
   dots.forEach((x,i)=>x.classList.toggle("active",i===n-1));
-  current=n;scrollTo({top:0,behavior:"smooth"});
-  if(n===2){makeBalloons(12);showHint();startMusic()}
-  if(n===5)setTimeout(celebrate,400);
+  current=n; currentStep=n; currentPin=pin; scrollTo({top:0,behavior:"smooth"});
+  if(n===2){launchBalloonFlurry(8);showHint();startBirthdayCelebrationMusic();startContinuousBalloons()}
+  if(n===5)setTimeout(triggerCelebrationBurst,400);
 }
-function press(n){audio();if(pin.length>=4)return;pin+=n;drawPin();if(pin.length===4)setTimeout(checkPin,220)}
+function press(n){initAudio();if(pin.length>=4)return;pin+=n;drawPin();if(pin.length===4)setTimeout(checkPin,220)}
 function drawPin(){for(let i=1;i<=4;i++){let b=document.getElementById("p"+i);b.textContent=pin[i-1]?"•":"";b.classList.toggle("active",!!pin[i-1])}}
 function clearPin(){pin=pin.slice(0,-1);drawPin();document.getElementById("hint").textContent=""}
+function audio(){ initAudio(); }
+function makeBalloons(n=10){ launchBalloonFlurry(n); }
+function startMusic(){ startBirthdayCelebrationMusic(); }
+function celebrate(){ triggerCelebrationBurst(); }
+function goToStep(n){ next(n); }
 function checkPin(){
- audio();let boxes=document.querySelectorAll(".pin-box"),h=document.getElementById("hint");
+ initAudio();let boxes=document.querySelectorAll(".pin-box"),h=document.getElementById("hint");
  if(pin===SECRET_PIN){h.style.color="#86efac";h.textContent="Unlocked ❤️";confetti(80);setTimeout(()=>next(2),550)}
  else{h.textContent="Oops! Galat passcode 🙈 Shivani";boxes.forEach(x=>x.classList.add("error"));setTimeout(()=>boxes.forEach(x=>x.classList.remove("error")),450);setTimeout(()=>{pin="";drawPin()},450)}
 }
 let opened=false;
-function openGift(){audio();startMusic();if(!opened){opened=true;document.querySelector(".gift").classList.add("open");confetti(60);makeBalloons(8);showHint()}}
+function openGift(){initAudio();startBirthdayCelebrationMusic();if(!opened){opened=true;document.querySelector(".gift").classList.add("open");confetti(60);launchBalloonFlurry(8);showHint()}}
 
    // Floating particles (Hearts, Stars, Soft Orbs)
     class Particle {
@@ -333,6 +359,7 @@ function openGift(){audio();startMusic();if(!opened){opened=true;document.queryS
     for (let i = 0; i < 45; i++) {
       particles.push(new Particle());
     }
+    drawAmbient();
   
 
 
@@ -363,6 +390,8 @@ function openGift(){audio();startMusic();if(!opened){opened=true;document.queryS
 
       balloon.style.left = `${x}px`;
       balloon.style.transform = `scale(${sizeScale})`;
+      balloon.style.background = colorData.bg;
+      balloon.style.setProperty('--b', colorData.knot);
 
       balloon.innerHTML = `
         <div class="balloon-body" style="background: ${colorData.bg};">
@@ -390,7 +419,7 @@ function openGift(){audio();startMusic();if(!opened){opened=true;document.queryS
 
       balloon.addEventListener("click", (e) => {
         e.stopPropagation();
-        popBalloon(balloon, currentX || x, posY);
+        popBalloon(balloon, parseFloat(balloon.style.left) || x, posY);
       });
 
       balloonContainer.appendChild(balloon);
@@ -458,7 +487,7 @@ function starDraw(){sx.clearRect(0,0,sc.width,sc.height);stars.forEach(s=>{s.a+=
     }
 
     function playBellNote(freq, duration = 0.8, volume = 0.15) {
-      if (!audioContext || !isMusicPlaying) return;
+      if (!audioContext) return;
       try {
         const now = audioContext.currentTime;
         const osc1 = audioContext.createOscillator();
@@ -624,6 +653,7 @@ function starDraw(){sx.clearRect(0,0,sc.width,sc.height);stars.forEach(s=>{s.a+=
 
     function restartSurprise() {
       currentPin = "";
+      pin = "";
       candleBlown = false;
       document.getElementById("candleFlame").innerText = "🕯️";
       document.getElementById("candlePrompt").innerText = "Tap candle to make a secret birthday wish ✨";
